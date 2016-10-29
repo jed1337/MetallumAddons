@@ -36,7 +36,7 @@ __Global shortcuts__
 Description | Shortcut
 --- | ---
 Select username area | l
-Select search bar | /
+Select search bar | `/`
 
 
 __Artist view__
