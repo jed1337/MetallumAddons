@@ -18,21 +18,8 @@ Feel free to improve this project or offer up some suggestions.
 __Album view__
 * Toggle all lyrics button
 
-#Copy paste
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
-There must be at least 3 dashes separating each header cell.
-The outer pipes (|) are optional, and you don't need to make the 
-raw Markdown line up prettily. You can also use inline Markdown.
-
-#Copy paste end
-
 ### Shortcuts
-__Global shortcuts__
+___Global shortcuts___
 
 Description | Shortcut
 --- | ---
@@ -40,14 +27,14 @@ Select username area | l
 Select search bar | /
 
 
-__Artist view__
+___Artist view___
 
 Description | Shortcut
 --- | ---
 Select next album | j
 Select previous album | k
 
-__Album view__
+___Album view___
 
 Description | Shortcut
 --- | ---
