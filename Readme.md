@@ -21,20 +21,20 @@ __Album view__
 ### Shortcuts  
 __Global shortcuts__  
 Description | Shortcut  
--|-  
+- | -  
 Select username area | l  
 Select search bar | /  
 
 
 __Artist view__  
 Description | Shortcut  
--|-  
+- | -  
 Select next album | j  
 Select previous album | k  
 
 __Album view__  
 Description | Shortcut  
--|-  
+- | -  
 Toggle all lyrics | a  
 Go to artist page | Shift + a  
 Click on the album cover | c  
