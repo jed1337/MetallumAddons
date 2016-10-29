@@ -29,10 +29,6 @@ There must be at least 3 dashes separating each header cell.
 The outer pipes (|) are optional, and you don't need to make the 
 raw Markdown line up prettily. You can also use inline Markdown.
 
-Description | Shortcut
---- | ---
-Select username area | l
-1 | 2
 #Copy paste end
 
 ### Shortcuts
@@ -45,12 +41,14 @@ Select search bar | /
 
 
 __Artist view__
+
 Description | Shortcut
 --- | ---
 Select next album | j
 Select previous album | k
 
 __Album view__
+
 Description | Shortcut
 --- | ---
 Toggle all lyrics | a
