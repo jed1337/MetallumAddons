@@ -35,14 +35,16 @@ addCss('.highlight{ \
 
 $(function() {
 	Mousetrap.bind({
+		'l'       : login,
 		'/'       : function search(){Focus($("#searchQueryBox"));},
+
+		'j'       : function next() { highLight('j') },
+		'k'       : function prev() { highLight('k') }, 
+
 		'a'       : function toggleLyrics(){$("#ToggleLyrics").click();},
 		'shift+a' : function gotoArtist(){$(".band_name> a")[0].click();},
 		'c'       : function cover(){$("#cover").click();},
-		'l'       : login,
-		'm'       : discography,
-		'j'       : function next() { highLight('j') },
-		'k'       : function prev() { highLight('k') }
+		'm'       : discography
 	}); 
 
 	addToggleAllLyricsButton();
