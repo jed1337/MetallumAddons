@@ -18,27 +18,27 @@ Feel free to improve this project or offer up some suggestions.
 __Album view__
 * Toggle all lyrics button
 
-### Shortcuts  
-__Global shortcuts__  
-Description | Shortcut  
-------------- | -------------  
-Select username area | l  
-Select search bar | /  
+### Shortcuts
+__Global shortcuts__
+Description | Shortcut
+--- | ---
+Select username area | l
+Select search bar | /
 
 
-__Artist view__  
-Description | Shortcut  
-------------- | -------------  
-Select next album | j  
-Select previous album | k  
+__Artist view__
+Description | Shortcut
+--- | ---
+Select next album | j
+Select previous album | k
 
-__Album view__  
-Description | Shortcut  
-------------- | -------------  
-Toggle all lyrics | a  
-Go to artist page | Shift + a  
-Click on the album cover | c  
-Select previous work | m  
+__Album view__
+Description | Shortcut
+--- | ---
+Toggle all lyrics | a
+Go to artist page | Shift + a
+Click on the album cover | c
+Select previous work | m
 
 
 #### _Things to add_
