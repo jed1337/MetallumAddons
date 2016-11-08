@@ -23,7 +23,9 @@ __Album view__
 
 Description | Shortcut
 --- | ---
-Go to the forum | f
+Go to the help screen | Shift + h
+Go to the rules page | Shift + r
+Go to the forum | Shift + f
 Select username area | l
 Select search bar | /
 

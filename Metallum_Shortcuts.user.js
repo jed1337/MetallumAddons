@@ -7,7 +7,7 @@
 // @require     https://raw.githubusercontent.com/ccampbell/mousetrap/master/plugins/bind-dictionary/mousetrap-bind-dictionary.js
 
 // @include     http://www.metal-archives.com/*
-// @version     3.1
+// @version     3.3
 // @grant       none
 // @icon        http://is3.mzstatic.com/image/thumb/Purple69/v4/b8/23/15/b8231518-c6c9-3127-f13e-8d9dc2f3046d/source/100x100bb.jpg
 // ==/UserScript==
@@ -35,16 +35,19 @@ addCss('.highlight{ \
 
 $(function() {
 	Mousetrap.bind({
-		'f' : function forum(){$("#top_menu_box > .menu_style_1 > li:last-child > a")[0].click()},
+	//Global shortcuts
+		'shift+h' : function(){topMenuBox(1)},
+		'shift+r' : function(){topMenuBox(2)},
+		'shift+f' : function(){topMenuBox(3)},
 		'l'       : login,
-		'/'       : function search(){Focus($("#searchQueryBox"));},
-
-		'j'       : function next() { highLight('j') },
-		'k'       : function prev() { highLight('k') }, 
-
-		'a'       : function toggleLyrics(){$("#ToggleLyrics").click();},
-		'shift+a' : function gotoArtist(){$(".band_name> a")[0].click();},
-		'c'       : function cover(){$("#cover").click();},
+		'/'       : function(){Focus($("#searchQueryBox"));},
+	//Artist view
+		'j'       : function() {highLight('j')},
+		'k'       : function() {highLight('k')},
+	//Album view
+		'a'       : function(){$("#ToggleLyrics").click();},
+		'shift+a' : function(){$(".band_name> a")[0].click();},
+		'c'       : function(){$("#cover").click();},
 		'm'       : discography
 	}); 
 
@@ -67,14 +70,6 @@ function highLight(letter) {
 	media.eq(index).addClass('highlight').focus();
 }
 
-function login(){
-	Focus($("#login_form > div > input[name=loginUsername]"));
-}
-
-function discography() {
-	Focus($("#album_sidebar > .chronology > tbody > .prevNext> td:not(.arrows)> a:first"));
-}
-
 function Focus(selector, frequency=4){
 	selector.focus();
 
@@ -83,6 +78,18 @@ function Focus(selector, frequency=4){
 			selector.toggleClass('highlight');
 		}, (150* i));
 	}
+}
+
+function topMenuBox(num){
+	$("#top_menu_box > .menu_style_1 > li:nth-child("+num+") > a")[0].click();
+}
+
+function login(){
+	Focus($("#login_form > div > input[name=loginUsername]"));
+}
+
+function discography() {
+	Focus($("#album_sidebar > .chronology > tbody > .prevNext> td:not(.arrows)> a:first"));
 }
 
 function addToggleAllLyricsButton(){
