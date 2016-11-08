@@ -35,6 +35,7 @@ addCss('.highlight{ \
 
 $(function() {
 	Mousetrap.bind({
+		'f' : function forum(){$("#top_menu_box > .menu_style_1 > li:last-child > a")[0].click()},
 		'l'       : login,
 		'/'       : function search(){Focus($("#searchQueryBox"));},
 
@@ -51,7 +52,7 @@ $(function() {
 });
 
 function highLight(letter) {
-	//Href starts with http://...metal-...albums...
+	//Href starts with http://...metal-ar...albums
 	var media  = $('table.discog> tbody> tr> td> a[href^="http://www.metal-archives.com/albums"]');
 	var hlight = $('.highlight');
 	var index  = media.index(hlight);
@@ -98,6 +99,7 @@ function addToggleAllLyricsButton(){
 		}
 	});
 
+	// Only add a togle lyrics button if there are lyrics to toggle.
 	if(lyricButtons.length>0){
 		tbody.find("tr:last > td:last").append(button);
 	}

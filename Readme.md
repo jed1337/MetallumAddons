@@ -23,6 +23,7 @@ __Album view__
 
 Description | Shortcut
 --- | ---
+Go to the forum | f
 Select username area | l
 Select search bar | /
 
