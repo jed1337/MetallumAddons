@@ -7,8 +7,9 @@ Metal-archives has already included [JQuery](https://jquery.com/) in its code. I
 Feel free to improve this project or offer up some suggestions.  
 
 ## How to install  
-1. Download the add on [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) for [Firefox](https://www.mozilla.org/en-US/firefox/new/) or [Tappermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) for [Chrome](https://www.google.com/chrome/).
-2. Click on new script and paste [Metallum_Shortcuts.user](https://github.com/jed1337/MetallumShortcuts/blob/master/Metallum_Shortcuts.user.js) on it. The dependencies are automatically downloaded after opening a page under the archives.
+1. Download the add-on [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) for [Firefox](https://www.mozilla.org/en-US/firefox/new/) or [Tappermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) for [Chrome](https://www.google.com/chrome/).
+2. Click the [Raw Metallum_Shortcuts.user file](https://github.com/jed1337/MetallumShortcuts/raw/master/Metallum_Shortcuts.user.js). Greasemonkey or Tappermonkey will prompt you if you want to install the file.
+3. Click Install. The dependencies are automatically downloaded as well.
 
 ## Dependencies  
 * [Mousetrap.js](https://github.com/ccampbell/mousetrap)
@@ -26,25 +27,25 @@ Description | Shortcut
 Go to the help screen | Shift + h
 Go to the rules page | Shift + r
 Go to the forum | Shift + f
-Select username area | l
-Select search bar | /
+Focus on the username area | l
+Focus on the search bar | /
 
 
 ### Artist view
 
 Description | Shortcut
 --- | ---
-Select next album | j
-Select previous album | k
+Select the next album | j
+Select the previous album | k
 
 ### Album view
 
 Description | Shortcut
 --- | ---
 Toggle all lyrics | a
-Go to artist page | Shift + a
+Go to the artist page | Shift + a
 Click on the album cover | c
-Select previous work | m
+Select the previous work | m
 
 
 ## _Things to add_
