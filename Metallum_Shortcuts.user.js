@@ -7,7 +7,7 @@
 // @require     https://raw.githubusercontent.com/ccampbell/mousetrap/master/plugins/bind-dictionary/mousetrap-bind-dictionary.js
 
 // @include     http://www.metal-archives.com/*
-// @version     3.3
+// @version     4
 // @grant       none
 // @icon        http://is3.mzstatic.com/image/thumb/Purple69/v4/b8/23/15/b8231518-c6c9-3127-f13e-8d9dc2f3046d/source/100x100bb.jpg
 // ==/UserScript==
@@ -34,6 +34,10 @@ addCss('.highlight{ \
 	');
 
 $(function() {
+	addAnchors()
+	addToggleAllLyricsButton();
+	addCopyLyricsButton();
+
 	Mousetrap.bind({
 	//Global shortcuts
 		'shift+h' : function(){topMenuBox(1)},
@@ -42,16 +46,23 @@ $(function() {
 		'l'       : login,
 		'/'       : function(){Focus($("#searchQueryBox"));},
 	//Artist view
-		'j'       : function() {highLight('j')},
-		'k'       : function() {highLight('k')},
+		'j'       : function(){highLight('j')},
+		'k'       : function(){highLight('k')},
 	//Album view
 		'a'       : function(){$("#ToggleLyrics").click();},
 		'shift+a' : function(){$(".band_name> a")[0].click();},
 		'c'       : function(){$("#cover").click();},
 		'm'       : discography
-	}); 
-
-	addToggleAllLyricsButton();
+	});
+	//Bind anchors to alt + <songnumber>
+	for(var i=1; i<=10; i++){
+		(function(i){
+			var id = (i%10);
+			Mousetrap.bind('alt+'+id, function(){
+				$("a[name="+ id +"]")[0].click();
+			});
+		})(i);
+	}
 });
 
 function highLight(letter) {
@@ -92,6 +103,18 @@ function discography() {
 	Focus($("#album_sidebar > .chronology > tbody > .prevNext> td:not(.arrows)> a:first"));
 }
 
+function addAnchors(){
+	var songNumbers = $("tbody>tr>td[width=20]>a");
+	while(songNumbers.length>10){
+		songNumbers.splice(-1);
+	}
+	for (var i = 0; i < songNumbers.length; i++) {
+		var id = (i+1)%10;
+		songNumbers[i].setAttribute("href", "#"+id);
+		songNumbers[i].setAttribute("name", id);
+	}
+}
+
 function addToggleAllLyricsButton(){
 	var tbody        = $(".table_lyrics > tbody");
 	var lyricButtons = tbody.find("tr > td > a[id^=lyricsButton]");	//a's id starts with lyricsButton
@@ -110,4 +133,51 @@ function addToggleAllLyricsButton(){
 	if(lyricButtons.length>0){
 		tbody.find("tr:last > td:last").append(button);
 	}
+}
+
+function addCopyLyricsButton(){
+	var trs   = $(".table_lyrics > tbody >tr:has(a[id^=lyricsButton])");
+	var a     = trs.find("td>a[id^=lyricsButton]")
+	var hrefs = a.map(function(){
+		return this.getAttribute("href")
+	})
+	
+	for (var i = 0; i < trs.length; i++) {
+		trs[i].append(makeCopyLyricsButton(hrefs[i]));
+	}
+}
+
+function makeCopyLyricsButton(href){
+	if(href.indexOf('#')==0){
+		href = href.substring(1, href.length);
+	}
+	toggleLyrics(href);
+	toggleLyrics(href);
+
+
+	var button = $("<button/>", {
+		// text:  href,
+		text:  "CL",
+		click: function() {
+			var lyrics = $("#lyrics_"+href).text().trim();
+			if(lyrics === "(loading lyrics...)"){
+				alert("The lyrics haven't loaded yet");
+			}
+
+			// Create a "hidden" textarea to support multi-line
+			// and append it to the end of body
+			var $temp = $("<textarea>");
+			$("body").append($temp);
+
+			// Put the lyrics in it and highlight it
+			$temp.val(lyrics).select();
+
+			// Copy the highlighted text
+			document.execCommand("copy");
+
+			// Remove it from the body
+			$temp.remove();
+		}
+	});
+	return button[0];
 }

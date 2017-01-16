@@ -1,6 +1,6 @@
 # Keyboard shortcuts for [metal-archives.com](metal-archives.com/)  
 ## Description  
-The shortcuts in this project were created to make the site easeier to use as well as for me to practise my Javascript. It focuses on the site's artist and album page. It also provides shortcuts for general use.  
+The shortcuts in this project were created to make the site easier to use as well as for me to practise my Javascript. It focuses on the site's artist and album page. It also provides shortcuts for general use.  
 
 Metal-archives has already included [JQuery](https://jquery.com/) in its code. Including it again within the script causes the site to have problems and the shortcuts to not function.
 
@@ -50,13 +50,14 @@ Select the previous work | m
 
 ## _Things to add_
 * _Additional features_
-    * _Album view_
-        * _Add anchor tags to the songs and make it easier to focus on specific songs_
+  * _Album view_
+      * _Add anchor tags to the songs and make it easier to focus on specific songs_
+      * _Add a copy lyrics button_
 * _Navigational shortcuts for_
-	* _Advanced search_
-	* _Forum view_
-	* _Profile view_
+  * _Advanced search_
+  * _Forum view_
+  * _Profile view_
     * _Album view_
-	    * _Go to the reviews section_
+      * _Go to the reviews section_
     * _Artist view_
-	    * _Easily scroll through the discography, members, reviews, etc. tab._
+      * _Easily scroll through the discography, members, reviews, etc. tab._
