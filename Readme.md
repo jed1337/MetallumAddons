@@ -48,7 +48,7 @@ Toggle all lyrics | a
 Click on the album cover | c
 Select the previous work | m
 Go to the artist page | Shift + a
-Focus on a specific song | Alt + _&lt;song number&gt;_
+Focus on a specific song | Alt + _&lt;song_number(1 to 99)&gt;_
 
 
 ## _Things to add_
