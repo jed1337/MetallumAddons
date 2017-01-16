@@ -46,12 +46,15 @@ Description | Shortcut
 --- | ---
 Toggle all lyrics | a
 Click on the album cover | c
-Select the previous work | m
+Select the next item in the discography | j
+Select the previous item in the discography | k
 Go to the artist page | Shift + a
 Focus on a specific song | Alt + _&lt;song_number(1 to 99)&gt;_
+Copy lyrics | Ctrl + alt + c (After focusing on a specific song)
 
 
 ## _Things to add_
+* _Code cleanup_
 * _Navigational shortcuts for_
   * _Advanced search_
   * _Forum view_
