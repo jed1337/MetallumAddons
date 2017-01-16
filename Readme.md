@@ -18,6 +18,8 @@ Feel free to improve this project or offer up some suggestions.
 ## Additional features
 __Album view__
 * Toggle all lyrics button
+* Anchor tags to the songs
+* Copy lyrics button
 
 ## Shortcuts
 ### Global shortcuts
@@ -43,16 +45,13 @@ Select the previous album | k
 Description | Shortcut
 --- | ---
 Toggle all lyrics | a
-Go to the artist page | Shift + a
 Click on the album cover | c
 Select the previous work | m
+Go to the artist page | Shift + a
+Focus on a specific song | Alt + <song number>
 
 
 ## _Things to add_
-* _Additional features_
-  * _Album view_
-      * _Add anchor tags to the songs and make it easier to focus on specific songs_
-      * _Add a copy lyrics button_
 * _Navigational shortcuts for_
   * _Advanced search_
   * _Forum view_
