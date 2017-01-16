@@ -34,7 +34,7 @@ addCss('.highlight{ \
 	');
 
 $(function() {
-	addAnchors()
+	var anchorLength = addAnchors()
 	addToggleAllLyricsButton();
 	addCopyLyricsButton();
 
@@ -55,11 +55,17 @@ $(function() {
 		'm'       : discography
 	});
 	//Bind anchors to alt + <songnumber>
-	for(var i=1; i<=10; i++){
+	for(var i=1; i<=anchorLength; i++){
 		(function(i){
-			var id = (i%10);
-			Mousetrap.bind('alt+'+id, function(){
-				$("a[name="+ id +"]")[0].click();
+			var binding = 'alt+'+(i%10);
+
+			if(i>=10){
+				var tens = parseInt(i/10);
+				binding = 'alt+'+tens+" "+binding;
+			}
+
+			Mousetrap.bind(binding, function(){
+				$("a[name="+ i +"]")[0].click();
 			});
 		})(i);
 	}
@@ -105,14 +111,15 @@ function discography() {
 
 function addAnchors(){
 	var songNumbers = $("tbody>tr>td[width=20]>a");
-	while(songNumbers.length>10){
-		songNumbers.splice(-1);
-	}
+	// while(songNumbers.length>10){
+	// 	songNumbers.splice(-1);
+	// }
 	for (var i = 0; i < songNumbers.length; i++) {
-		var id = (i+1)%10;
+		var id = (i+1);
 		songNumbers[i].setAttribute("href", "#"+id);
 		songNumbers[i].setAttribute("name", id);
 	}
+	return songNumbers.length;
 }
 
 function addToggleAllLyricsButton(){
