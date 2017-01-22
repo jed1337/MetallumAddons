@@ -48,26 +48,17 @@ $(function() {
 	});
 
 	//Artist view
-	if(window.location.href.startsWith("http:\/\/www.metal-archives.com\/bands\/")){
-		//Href starts with http://...metal-ar...albums
-		var path = 'table.discog> tbody> tr> td> a[href^="http://www.metal-archives.com/albums"]';
-
-		Mousetrap.bind({
-			'j' : function(){highLight('j', path);},
-			'k' : function(){highLight('k', path);}
-		});
+	//Href starts with http://...metal-ar...albums
+	if(startsWith("http:\/\/www.metal-archives.com\/bands\/")){
+		bindJK('table.discog> tbody> tr> td> a[href^="http://www.metal-archives.com/albums"]');
 	}
 
 	//Album view
-	if(window.location.href.startsWith("http:\/\/www.metal-archives.com\/albums\/")){
-
-		var path = '#album_sidebar > table.chronology > tbody > .prevNext > td:not(.arrows)> a';
+	if(startsWith("http:\/\/www.metal-archives.com\/albums\/")){
+		bindJK('#album_sidebar > table.chronology > tbody > .prevNext > td:not(.arrows)> a');
 		Mousetrap.bind({
 			'a'          : function(){$("#ToggleLyrics").click();},
 			'c'          : function(){$("#cover").click();},
-			
-			'j'          : function(){highLight('j', path);},
-			'k'          : function(){highLight('k', path);},
 			
 			'shift+a'    : function(){$(".band_name> a")[0].click();},
 			'ctrl+alt+c' : copyLyrics
@@ -89,11 +80,26 @@ $(function() {
 			})(i);
 		}
 	}
+
+	//Search view
+	if(startsWith("http:\/\/www.metal-archives.com\/search?")){
+		bindJK('#searchResults>tbody>tr>td>a');
+	}
 });
+
+function bindJK(path){
+	Mousetrap.bind({
+		'j': function(){highLight('j', path);},
+		'k': function(){highLight('k', path);},
+	});
+}
+
+function startsWith(href){
+	return window.location.href.startsWith(href);
+}
 
 
 function highLight(letter, path) {
-
 	var context = $(path);
 	var hlight  = $('.highlight');
 	var index   = context.index(hlight);
@@ -126,17 +132,8 @@ function login(){
 	Focus($("#login_form > div > input[name=loginUsername]"));
 }
 
-function discography(letter) {
-	Focus($("#album_sidebar > table.chronology > tbody > .prevNext> td:not(.arrows)> a")
-		[letter==="n"? 0 : 1]
-	);
-}
-
 function addAnchors(){
 	var songNumbers = $("tbody>tr>td[width=20]>a");
-	// while(songNumbers.length>10){
-	// 	songNumbers.splice(-1);
-	// }
 	for (var i = 0; i < songNumbers.length; i++) {
 		var id = (i+1);
 		songNumbers[i].setAttribute("href", "#"+id);
@@ -191,7 +188,6 @@ function makeCopyLyricsButton(href){
 
 
 	var button = $("<button/>", {
-		// text:  href,
 		text:  "CL",
 		click: function() {
 			var lyrics = $("#lyrics_"+href).text().trim();
