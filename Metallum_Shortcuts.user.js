@@ -56,7 +56,8 @@ $(function() {
 
 	//Album view
 	if(startsWith("http:\/\/www.metal-archives.com\/albums\/")){
-		bindJK("#album_sidebar> table.chronology> tbody> tr.prevNext> td.prev, td.next", "a");
+		//The comma in "td.prev , td.next" means OR
+		bindJK("#album_sidebar> table.chronology> tbody> tr.prevNext> td.prev, td.next", "a");	
 		Mousetrap.bind({
 			'a'          : function(){$("#ToggleLyrics").click();},
 			'c'          : function(){$("#cover").click();},
