@@ -52,6 +52,12 @@ Go to the artist page | Shift + a
 Focus on a specific song | Alt + _&lt;song_number(1 to 99)&gt;_
 Copy lyrics | Ctrl + alt + c (After focusing on a specific song)
 
+### Search view
+
+Description | Shortcut
+--- | ---
+Select the next item in the search results | j
+Select the previous item in the search results | k
 
 ## _Things to add_
 * _Code cleanup_

@@ -7,7 +7,7 @@
 // @require     https://raw.githubusercontent.com/ccampbell/mousetrap/master/plugins/bind-dictionary/mousetrap-bind-dictionary.js
 
 // @include     http://www.metal-archives.com/*
-// @version     4.2
+// @version     5.0
 // @grant       none
 // @icon        http://is3.mzstatic.com/image/thumb/Purple69/v4/b8/23/15/b8231518-c6c9-3127-f13e-8d9dc2f3046d/source/100x100bb.jpg
 // ==/UserScript==
@@ -22,7 +22,7 @@ addCss('.highlight{\
 	-o-transition: linear 0.1s ! important; \
 	transition: linear 0.1s ! important; \
 }');
-addCss(".highlight a{color:#fff}");
+addCss(".highlight a{color:#fff; outline:none}");
 
 function addCss(css) {
 	var head, style;
@@ -51,13 +51,12 @@ $(function() {
 	//Artist view
 	//Href starts with http://...metal-ar...albums
 	if(startsWith("http:\/\/www.metal-archives.com\/bands\/")){
-		// bindJK('table.discog> tbody> tr> td> a[href^="http://www.metal-archives.com/albums"]');
-		bindJK('table.discog> tbody> tr');
+		bindJK("table.discog> tbody> tr", "td>a:first");
 	}
 
 	//Album view
 	if(startsWith("http:\/\/www.metal-archives.com\/albums\/")){
-		bindJK('#album_sidebar > table.chronology > tbody > .prevNext > td:not(.arrows)> a');
+		bindJK("#album_sidebar> table.chronology> tbody> tr.prevNext> td.prev, td.next", "a");
 		Mousetrap.bind({
 			'a'          : function(){$("#ToggleLyrics").click();},
 			'c'          : function(){$("#cover").click();},
@@ -85,14 +84,14 @@ $(function() {
 
 	//Search view
 	if(startsWith("http:\/\/www.metal-archives.com\/search?")){
-		bindJK('#searchResults>tbody>tr>td>a');
+		bindJK("#searchResults>tbody>tr", "td>a");
 	}
 });
 
-function bindJK(path){
+function bindJK(pathTR, pathA){
 	Mousetrap.bind({
-		'j': function(){highLight('j', path);},
-		'k': function(){highLight('k', path);},
+		'j': function(){highLight('j', pathTR, pathA);},
+		'k': function(){highLight('k', pathTR, pathA);},
 	});
 }
 
@@ -101,8 +100,8 @@ function startsWith(href){
 }
 
 
-function highLight(letter, path) {
-	var context = $(path);
+function highLight(letter, pathTR, pathA) {
+	var context = $(pathTR);
 	var hl      = "highlight";
 	var index   = context.index($('.'+hl));
 
@@ -118,8 +117,7 @@ function highLight(letter, path) {
 			index = 0;
 		}
 	}
-	// alert("old: "+old+"  cur:"+index);
-	context.eq(index).addClass(hl).focus();
+	context.eq(index).addClass(hl).find(pathA).focus();
 }
 
 function Focus(selector, frequency=4){
