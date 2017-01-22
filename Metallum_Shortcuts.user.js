@@ -7,31 +7,32 @@
 // @require     https://raw.githubusercontent.com/ccampbell/mousetrap/master/plugins/bind-dictionary/mousetrap-bind-dictionary.js
 
 // @include     http://www.metal-archives.com/*
-// @version     4.1
+// @version     4.2
 // @grant       none
 // @icon        http://is3.mzstatic.com/image/thumb/Purple69/v4/b8/23/15/b8231518-c6c9-3127-f13e-8d9dc2f3046d/source/100x100bb.jpg
 // ==/UserScript==
 
 "use strict";
 
-function addCss(css) {
-	 var head, style;
-	 head = document.getElementsByTagName('head')[0];
-	 if (!head) { return; }
-	 style = document.createElement('style');
-	 style.type = 'text/css';
-	 style.innerHTML = css;
-	 head.appendChild(style);
-}
+addCss('.highlight{\
+	background: rgba(192, 57, 43,0.8) ! important; \
+	border: none ! important; \
+	color: #fff ! important; \
+	-webkit-transition: linear 0.1s ! important; \
+	-o-transition: linear 0.1s ! important; \
+	transition: linear 0.1s ! important; \
+}');
+addCss(".highlight a{color:#fff}");
 
-addCss('.highlight{ \
-	 background: rgba(192, 57, 43,0.8) ! important; \
-	 border: none ! important; \
-	 color: #fff ! important; \
-	 -webkit-transition: linear 0.1s ! important; \
-	 -o-transition: linear 0.1s ! important; \
-	 transition: linear 0.1s ! important; \
-	');
+function addCss(css) {
+	var head, style;
+	head = document.getElementsByTagName('head')[0];
+	if (!head) { return; }
+	style = document.createElement('style');
+	style.type = 'text/css';
+	style.innerHTML = css;
+	head.appendChild(style);
+}
 
 $(function() {
 	var anchorLength = addAnchors()
@@ -50,7 +51,8 @@ $(function() {
 	//Artist view
 	//Href starts with http://...metal-ar...albums
 	if(startsWith("http:\/\/www.metal-archives.com\/bands\/")){
-		bindJK('table.discog> tbody> tr> td> a[href^="http://www.metal-archives.com/albums"]');
+		// bindJK('table.discog> tbody> tr> td> a[href^="http://www.metal-archives.com/albums"]');
+		bindJK('table.discog> tbody> tr');
 	}
 
 	//Album view
@@ -101,17 +103,23 @@ function startsWith(href){
 
 function highLight(letter, path) {
 	var context = $(path);
-	var hlight  = $('.highlight');
-	var index   = context.index(hlight);
+	var hl      = "highlight";
+	var index   = context.index($('.'+hl));
 
-	context.eq(index).removeClass('highlight');
-
+	context.eq(index).removeClass(hl);
+	var old = index;
 	if ( letter === 'k' ) {
-		index--;
+		if(index >= 0){
+			index--;
+		}
 	} else if ( letter === 'j' ) {
 		index++;
+		if(index === context.length){
+			index = 0;
+		}
 	}
-	context.eq(index).addClass('highlight').focus();
+	// alert("old: "+old+"  cur:"+index);
+	context.eq(index).addClass(hl).focus();
 }
 
 function Focus(selector, frequency=4){
