@@ -49,9 +49,9 @@ $(function() {
 	});
 
 	//Artist view
-	//Href starts with http://...metal-ar...albums
 	if(startsWith("http:\/\/www.metal-archives.com\/bands\/")){
-		bindJK("table.discog> tbody> tr", "td>a:first");
+		//Href starts with http://...metal-ar...albums
+		bindJK("table.discog> tbody> tr", "td>a[href^='http://www.metal-archives.com/albums']");
 	}
 
 	//Album view
