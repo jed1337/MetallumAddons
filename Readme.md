@@ -1,4 +1,4 @@
-# Additional features and keyboard shortcuts for [metal-archives.com](metal-archives.com/)  
+#  Additional features and keyboard shortcuts for [metal-archives.com](metal-archives.com/)  
 ## Description  
 The addons in this project were created to make the site easier to use as well as for me to practice my Javascript
 
