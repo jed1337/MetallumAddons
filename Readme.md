@@ -1,6 +1,6 @@
 # Keyboard shortcuts for [metal-archives.com](metal-archives.com/)  
 ## Description  
-The shortcuts in this project were created to make the site easier to use as well as for me to practise my Javascript. It focuses on the site's artist and album page. It also provides shortcuts for general use.  
+The addons in this project were created to make the site easier to use as well as for me to practice my Javascript
 
 Metal-archives has already included [JQuery](https://jquery.com/) in its code. Including it again within the script causes the site to have problems and the shortcuts to not function.
 
@@ -8,7 +8,7 @@ Feel free to improve this project or offer up some suggestions.
 
 ## How to install  
 1. Download the add-on [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) for [Firefox](https://www.mozilla.org/en-US/firefox/new/) or [Tappermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) for [Chrome](https://www.google.com/chrome/).
-2. Click the [Raw Metallum_Shortcuts.user file](https://github.com/jed1337/MetallumShortcuts/raw/master/Metallum_Shortcuts.user.js). Greasemonkey or Tappermonkey will prompt you if you want to install the file.
+2. Click the raw [Metallum_Shortcuts.user file](https://github.com/jed1337/MetallumShortcuts/raw/master/Metallum_Shortcuts.user.js). Greasemonkey or Tappermonkey will prompt you if you want to install the file.
 3. Click Install. The dependencies are automatically downloaded as well.
 
 ## Dependencies  
