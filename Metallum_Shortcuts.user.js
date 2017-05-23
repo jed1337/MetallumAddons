@@ -1,4 +1,4 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name        Metallum Shortcuts
 // @author      Jed Caychingco
 // @description Keyboard shortcuts for metal-archives.com
@@ -7,7 +7,8 @@
 // @require     https://raw.githubusercontent.com/ccampbell/mousetrap/master/plugins/bind-dictionary/mousetrap-bind-dictionary.js
 
 // @include     http://www.metal-archives.com/*
-// @version     5.1
+// @include     https://www.metal-archives.com/*
+// @version     5.2
 // @grant       none
 // @icon        http://is3.mzstatic.com/image/thumb/Purple69/v4/b8/23/15/b8231518-c6c9-3127-f13e-8d9dc2f3046d/source/100x100bb.jpg
 // ==/UserScript==
@@ -41,7 +42,7 @@ $(function() {
 
 	//Global shortcuts
 	Mousetrap.bind({
-		'shift+h' : function(){topMenuBox(1);},
+		'shift+h' : function(){$("div#auditTrail").find("a[href*='history']")[0].click()},
 		'shift+r' : function(){topMenuBox(2);},
 		'shift+f' : function(){topMenuBox(3);},
 		'l'       : login,
@@ -49,24 +50,23 @@ $(function() {
 	});
 
 	//Artist view
-	//Href starts with http://...metal-ar...albums
-	if(startsWith("http:\/\/www.metal-archives.com\/bands\/")){
-		bindJK("table.discog> tbody> tr", "td>a:first");
+	if(validPath("www.metal-archives.com\/bands\/")){
+		bindJK("table.discog> tbody> tr", "td>a[href*='/albums']");
 	}
 
 	//Album view
-	if(startsWith("http:\/\/www.metal-archives.com\/albums\/")){
+	if(validPath("www.metal-archives.com\/albums\/")){
 		//The comma in "td.prev , td.next" means OR
 		//td:has(a), only selects if <td> has an <a> child
-		bindJK("#album_sidebar> table.chronology> tbody> tr.prevNext> td.prev:has(a), td.next:has(a)", "a");	
+		bindJK("#album_sidebar> table.chronology> tbody> tr.prevNext> td.prev:has(a), td.next:has(a)", "a");
 		Mousetrap.bind({
 			'a'          : function(){$("#ToggleLyrics").click();},
 			'c'          : function(){$("#cover").click();},
-			
+
 			'shift+a'    : function(){$(".band_name> a")[0].click();},
 			'ctrl+alt+c' : copyLyrics
 		});
-		
+
 		//Bind anchors to alt + <songnumber>
 		for(var i=1; i<=anchorLength; i++){
 			(function(i){
@@ -85,7 +85,7 @@ $(function() {
 	}
 
 	//Search view
-	if(startsWith("http:\/\/www.metal-archives.com\/search?")){
+	if(validPath("www.metal-archives.com\/search")){
 		bindJK("#searchResults>tbody>tr", "td>a");
 	}
 });
@@ -93,12 +93,12 @@ $(function() {
 function bindJK(pathTR, pathA){
 	Mousetrap.bind({
 		'j': function(){highLight('j', pathTR, pathA);},
-		'k': function(){highLight('k', pathTR, pathA);},
+		'k': function(){highLight('k', pathTR, pathA);}
 	});
 }
 
-function startsWith(href){
-	return window.location.href.startsWith(href);
+function validPath(href){
+	return window.location.href.indexOf(href)>0;
 }
 
 
@@ -153,7 +153,7 @@ function addAnchors(){
 function addToggleAllLyricsButton(){
 	var tbody        = $(".table_lyrics > tbody");
 	var lyricButtons = tbody.find("tr > td > a[id^=lyricsButton]");	//a's id starts with lyricsButton
-	
+
 	var button = $("<a/>", {
 		id:   "ToggleLyrics",
 		text: "Toggle all lyrics",
@@ -181,7 +181,7 @@ function addCopyLyricsButton(){
 	var hrefs = a.map(function(){
 		return this.getAttribute("href")
 	})
-	
+
 	for (var i = 0; i < trs.length; i++) {
 		trs[i].append(makeCopyLyricsButton(hrefs[i]));
 	}
