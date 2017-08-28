@@ -42,15 +42,16 @@ $(function() {
 
 	//Global shortcuts
 	Mousetrap.bind({
-		'shift+h' : function(){$("div#auditTrail").find("a[href*='history']")[0].click()},
-		'shift+f' : function(){topMenuBox(3);},
 		'shift+b' : function(){click("a:contains('bookmark')")},
+		'shift+f' : function(){topMenuBox(3);},
 		'shift+m' : function(){click("a:contains('message')")},
+		'shift+u' : function(){click("span.member_name")},
+		'shift+h' : function(){$("div#auditTrail").find("a[href*='history']")[0].click()},
 		'l'       : login,
 		'/'       : function(){Focus($("#searchQueryBox"));}
 	});
 
-	//Artist view
+	//Bands view
 	if(validPath("www.metal-archives.com\/bands\/")){
 		bindJK("table.discog> tbody> tr", "td>a[href*='/albums']");
 		Mousetrap.bind({
@@ -92,6 +93,13 @@ $(function() {
 				});
 			})(i);
 		}
+	}
+
+	//Artist view
+	if(validPath("www.metal-archives.com\/artists")){
+		Mousetrap.bind({
+			'shift+e'    : function(){click("span.ui-icon-pencil:contains('Edit')")},
+		});
 	}
 
 	//Search view
